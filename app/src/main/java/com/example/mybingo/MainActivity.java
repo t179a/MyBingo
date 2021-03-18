@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +20,11 @@ public class MainActivity extends AppCompatActivity {
     //最大値の設定ボタン
     private Button registerMaxNumberButton;
 
+    //次の数字を出すボタン
     private Button nextNumberButton;
+
+    //現在の数字を表示するTextView
+    private TextView currentNumberTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         maxNumberEditText = findViewById(R.id.max_number);
         registerMaxNumberButton = findViewById(R.id.register_max_number);
         nextNumberButton = findViewById(R.id.next_number);
+        currentNumberTextView = findViewById(R.id.current_number);
 
         //最大値の初期化をEditTextにセットする。
         maxNumberEditText.setText("" + maxNumber);
@@ -63,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
         //1~75(最大値が初期値の場合)の整数を生成する。
         int nextNumber = (int) randomNumber + 1;
+
+        //nextNumberを画面に表示する。
+        currentNumberTextView.setText("" + nextNumber);
 
         Log.d("MainActivity", "nextNumber: " + nextNumber);
     }
