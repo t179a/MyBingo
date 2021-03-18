@@ -55,7 +55,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    //nextNumberButtonがタップされたときの処理
     private void onClickNextNumber(){
         Log.d("MainActivity", "onClickNextNumber");
+        //0.0~74.0(最大値が初期値の場合)の数値を生成する。
+        double randomNumber = Math.random() * (maxNumber - 1);
+
+        //1~75(最大値が初期値の場合)の整数を生成する。
+        int nextNumber = (int) randomNumber + 1;
+
+        Log.d("MainActivity", "nextNumber: " + nextNumber);
     }
 }
