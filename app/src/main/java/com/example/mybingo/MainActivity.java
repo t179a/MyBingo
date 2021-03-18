@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        maxNumberEditText = findViewById(R.id.max_number);
+        registerMaxNumberButton = findViewById(R.id.register_max_number);
+
         Log.d("MainActivity", "maxNumber: " + maxNumber);
     }
 }
