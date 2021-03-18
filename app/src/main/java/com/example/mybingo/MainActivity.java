@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     //現在の数字を表示するTextView
     private TextView currentNumberTextView;
 
+    //履歴を表示するTextView
+    private TextView historyTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         registerMaxNumberButton = findViewById(R.id.register_max_number);
         nextNumberButton = findViewById(R.id.next_number);
         currentNumberTextView = findViewById(R.id.current_number);
+        historyTextView = findViewById(R.id.history);
 
         //最大値の初期化をEditTextにセットする。
         maxNumberEditText.setText("" + maxNumber);
@@ -73,12 +77,21 @@ public class MainActivity extends AppCompatActivity {
         //maxNumberを考慮したランダムな数値
         int nextNumber = createRandomNumber();
 
+        //重複している数値だった場合は、数値の生成をやり直す。
+        while(history.contains("" + nextNumber)){
+            Log.d("MainActivity", "重複したので再生成");
+            nextNumber = createRandomNumber();
+        }
+
         //nextNumberを文字列に変換する。
         String nextNumberStr = "" + nextNumber;
 
         //履歴を残す。
         history.add(nextNumberStr);
         Log.d("MainActivity", history.toString());
+
+        //履歴を表示する
+        historyTextView.setText(history.toString());
 
     }
 
