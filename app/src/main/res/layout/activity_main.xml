@@ -8,18 +8,23 @@
 
     <EditText
         android:id="@+id/max_number"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="number"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="268dp" />
+        app:layout_constraintEnd_toStartOf="@+id/register_max_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/register_max_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="315dp"
-        tools:layout_editor_absoluteY="266dp" />
+        android:layout_marginEnd="8dp"
+        android:text="セット"
+        app:layout_constraintBottom_toBottomOf="@+id/max_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/max_number" />
 </androidx.constraintlayout.widget.ConstraintLayout>
