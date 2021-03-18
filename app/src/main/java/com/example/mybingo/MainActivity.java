@@ -9,10 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     //最大値
     private int maxNumber = 75;
+
+    //数字の履歴
+    private ArrayList<String> history = new ArrayList<>();
 
     //最大の入力欄
     private EditText maxNumberEditText;
@@ -64,15 +69,25 @@ public class MainActivity extends AppCompatActivity {
     //nextNumberButtonがタップされたときの処理
     private void onClickNextNumber(){
         Log.d("MainActivity", "onClickNextNumber");
+
+        //maxNumberを考慮したランダムな数値
+        int nextNumber = createRandomNumber();
+
+        //nextNumberを文字列に変換する。
+        String nextNumberStr = "" + nextNumber;
+
+        //履歴を残す。
+        history.add(nextNumberStr);
+        Log.d("MainActivity", history.toString());
+
+    }
+
+    //maxNumberを考慮したランダムな数値を生成する。
+    private int createRandomNumber(){
         //0.0~74.0(最大値が初期値の場合)の数値を生成する。
         double randomNumber = Math.random() * (maxNumber - 1);
 
-        //1~75(最大値が初期値の場合)の整数を生成する。
-        int nextNumber = (int) randomNumber + 1;
-
-        //nextNumberを画面に表示する。
-        currentNumberTextView.setText("" + nextNumber);
-
-        Log.d("MainActivity", "nextNumber: " + nextNumber);
+        //1~75(最大値が初期値の場合)の整数値を生成する。
+        return (int) randomNumber + 1;
     }
 }
