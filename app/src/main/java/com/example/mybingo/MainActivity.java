@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     //最大値の設定ボタン
     private Button registerMaxNumberButton;
 
+    private Button nextNumberButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         //ビューの変数を初期化する。
         maxNumberEditText = findViewById(R.id.max_number);
         registerMaxNumberButton = findViewById(R.id.register_max_number);
+        nextNumberButton = findViewById(R.id.next_number);
 
         //最大値の初期化をEditTextにセットする。
         maxNumberEditText.setText("" + maxNumber);
@@ -43,5 +46,16 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("MainActivity", "maxNumber: " + maxNumber);
             }
         });
+
+        //表示中の数字を更新する。
+        nextNumberButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickNextNumber();
+            }
+        });
+    }
+    private void onClickNextNumber(){
+        Log.d("MainActivity", "onClickNextNumber");
     }
 }
